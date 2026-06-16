@@ -3,11 +3,11 @@
 **Contribution Number:** 4  
 **Student:** Jessica Lang  
 **Issue:** [OpenHands/OpenHands#12279](https://github.com/OpenHands/OpenHands/issues/12279)  
-**Status:** Phase IV submission prep in progress
+**Status:** Phase IV submitted; awaiting review
 
 **Important note as of June 16, 2026:**
 
-I am working on Phase IV honestly based on the current state of my contribution, not the ideal end state. I have a real local OpenHands branch and a real local commit, but I do **not** yet have a submitted upstream pull request because the GitHub account authenticated on this machine is `SreytouchLang`, while the repositories I need to update are owned by `jessicalang2595`.
+I now have a real pushed OpenHands branch and a real submitted upstream draft PR. The original `jessicalang2595/OpenHands` fork was not writable from this machine, so I published the implementation branch through the authenticated `sreytouch` account and opened the upstream PR from that fork.
 
 ---
 
@@ -15,7 +15,8 @@ I am working on Phase IV honestly based on the current state of my contribution,
 
 ### Current OpenHands Contribution State
 
-- **Repository:** [jessicalang2595/OpenHands](https://github.com/jessicalang2595/OpenHands)
+- **Repository:** [sreytouch/OpenHands](https://github.com/sreytouch/OpenHands)
+- **Remote branch:** [sreytouch/OpenHands/tree/test/v1-pending-message-queueing](https://github.com/sreytouch/OpenHands/tree/test/v1-pending-message-queueing)
 - **Local branch:** `test/v1-pending-message-queueing`
 - **Local commit:** `789fba303da66ea87f0439211ed108fd2c499414`
 - **Commit message:** `test(frontend): add V1 pending message queue coverage`
@@ -53,9 +54,9 @@ The exact passing command was:
 
 ### Remaining Pre-Submission Risks
 
-1. I still do not have a pushed branch on my fork because `git push` returns GitHub permission errors.
-2. The original issue scope has drifted: current `OpenHands` `main` already includes server-side pending-message queueing, so this contribution is currently a test-coverage improvement around the modern implementation rather than a full original-feature implementation.
-3. Because of that scope drift, I would not use `Closes #12279` in a PR until maintainers confirm that this narrower contribution should resolve the issue.
+1. The original issue scope has drifted: current `OpenHands` `main` already includes server-side pending-message queueing, so this contribution is currently a test-coverage improvement around the modern implementation rather than a full original-feature implementation.
+2. I intentionally used `Related to #12279` in the PR instead of `Closes #12279` until maintainers confirm that this narrower contribution should resolve the issue.
+3. The full `conversation-websocket-handler.test.tsx` file still has unrelated broader failures in this environment even though the targeted queueing tests pass.
 
 ---
 
@@ -63,22 +64,22 @@ The exact passing command was:
 
 ### PR Link
 
-**PR Link:** Not available yet. The PR has not been submitted because the branch is not yet pushed to GitHub.
+**PR Link:** [OpenHands/OpenHands#14860](https://github.com/OpenHands/OpenHands/pull/14860)
 
-### Planned PR Route
+### Submitted PR Route
 
-When GitHub authentication is fixed, the PR route should be:
+The submitted draft PR route is:
 
-- **Head:** `jessicalang2595/OpenHands:test/v1-pending-message-queueing`
+- **Head:** `sreytouch/OpenHands:test/v1-pending-message-queueing`
 - **Base:** `OpenHands/OpenHands:main`
 
-### Draft PR Title
+### PR Title
 
 `test(frontend): add V1 pending message queue coverage`
 
-### Draft PR Description
+### Submitted PR Description
 
-I checked the repository PR template in `OpenHands/.github/pull_request_template.md`. Based on that template, this is the PR description I would submit:
+I checked the repository PR template in `OpenHands/.github/pull_request_template.md` and submitted the PR with this description:
 
 ~~~md
 ## Why
@@ -134,17 +135,15 @@ Not applicable. This PR adds automated frontend test coverage only.
   implementation rather than clearly resolving the entire original issue scope.
 ~~~
 
-### Why the PR Is Not Open Yet
+### Submission Notes
 
-I attempted to push the `OpenHands` branch with:
+I resolved the branch-hosting blocker in these steps:
 
-- `git push -u origin test/v1-pending-message-queueing`
+1. Created a writable fork at [sreytouch/OpenHands](https://github.com/sreytouch/OpenHands)
+2. Pushed `test/v1-pending-message-queueing` there
+3. Opened the upstream draft PR: [OpenHands/OpenHands#14860](https://github.com/OpenHands/OpenHands/pull/14860)
 
-That first failed over HTTPS because the stored credential resolved to the wrong GitHub identity, and it failed again after switching the remote to SSH:
-
-- `ERROR: Permission to jessicalang2595/OpenHands.git denied to SreytouchLang.`
-
-Because the branch is not on GitHub, I cannot truthfully open the upstream PR yet.
+The original `jessicalang2595/OpenHands` fork was still not writable from this machine, so using the authenticated `sreytouch` account was the cleanest way to get a truthful public branch and PR link.
 
 ---
 
@@ -152,43 +151,40 @@ Because the branch is not on GitHub, I cannot truthfully open the upstream PR ye
 
 **Maintainer Feedback:** None yet.
 
-No upstream PR has been opened, so there are currently no maintainer comments, requested changes, or approval states to report.
+The upstream PR is now open as a draft, but there are currently no maintainer comments, requested changes, or approval states to report.
 
 ---
 
 ## Status
 
-**Current Status:** Not yet submitted; blocked before review.
+**Current Status:** Draft PR submitted; awaiting review.
 
-This means I am not marking this contribution as `Awaiting review`, `Iterating`, `Approved`, or `Merged` yet. The accurate current state is:
+The accurate current state is:
 
-- PR draft prepared
-- local branch ready
-- local commit ready
-- push blocked by GitHub account/repository ownership mismatch
+- remote branch pushed
+- upstream draft PR open
+- no maintainer feedback yet
 
 ---
 
 ## Summary of Contribution
 
-My Week 4 contribution work focused on preparing a professional PR-ready submission package for the `OpenHands` test coverage I added in Week 3:
+My Week 4 contribution work focused on turning the Week 3 test contribution into a real upstream submission:
 
 - I confirmed the contribution branch, commit, diff scope, and targeted test results.
 - I checked the upstream repository's real PR template.
-- I drafted the PR title and full PR description in the format OpenHands expects.
-- I documented why the PR is not yet submitted and what must happen next.
-- I verified that SSH authentication on this machine works, but only for the `SreytouchLang` GitHub account.
+- I published the branch to a writable fork at `sreytouch/OpenHands`.
+- I opened draft PR [#14860](https://github.com/OpenHands/OpenHands/pull/14860) into `OpenHands/OpenHands:main`.
+- I documented the remaining scope caveats honestly instead of overstating the fix.
 
 ---
 
 ## Next Steps
 
-To complete Phase IV for real, I need to do these in order:
+The next steps from here are:
 
-1. Use a GitHub login or SSH key that has write access to the `jessicalang2595` repositories, or grant `SreytouchLang` collaborator access to them.
-2. Open the upstream PR from my fork branch into `OpenHands/OpenHands:main`.
-3. Update this README with the actual PR link.
-4. Document any maintainer feedback and my follow-up changes.
-5. Change the status to `Awaiting review`, `Iterating`, `Approved`, or `Merged` once that becomes true.
+1. Watch PR [#14860](https://github.com/OpenHands/OpenHands/pull/14860) for maintainer feedback.
+2. Respond with follow-up changes if requested.
+3. Update this README again if the PR moves from draft to active review, gets revisions, or is merged.
 
-At the moment, this README is an accurate Phase IV preparation record, but not yet a Phase IV completion record.
+At the moment, this README is an accurate Phase IV submission record with a real public PR link.
