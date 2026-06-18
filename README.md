@@ -5,7 +5,7 @@
 **Issue:** [OpenHands/OpenHands#12279](https://github.com/OpenHands/OpenHands/issues/12279)  
 **Status:** Phase IV submitted; ready for review
 
-**Important note as of June 18, 2026:**
+**Important note as of June 25, 2026:**
 
 I now have a real pushed OpenHands branch and a real submitted upstream PR. The original `jessicalang2595/OpenHands` fork was not writable from this machine, so I published the implementation branch through the authenticated `sreytouch` account and opened the upstream PR from that fork.
 
