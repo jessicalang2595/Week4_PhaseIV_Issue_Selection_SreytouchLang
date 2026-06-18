@@ -3,9 +3,9 @@
 **Contribution Number:** 4  
 **Student:** Jessica Lang  
 **Issue:** [OpenHands/OpenHands#12279](https://github.com/OpenHands/OpenHands/issues/12279)  
-**Status:** Phase IV submitted; awaiting review
+**Status:** Phase IV submitted; draft PR awaiting review
 
-**Important note as of June 16, 2026:**
+**Important note as of June 18, 2026:**
 
 I now have a real pushed OpenHands branch and a real submitted upstream draft PR. The original `jessicalang2595/OpenHands` fork was not writable from this machine, so I published the implementation branch through the authenticated `sreytouch` account and opened the upstream PR from that fork.
 
@@ -57,6 +57,7 @@ The exact passing command was:
 1. The original issue scope has drifted: current `OpenHands` `main` already includes server-side pending-message queueing, so this contribution is currently a test-coverage improvement around the modern implementation rather than a full original-feature implementation.
 2. I intentionally used `Related to #12279` in the PR instead of `Closes #12279` until maintainers confirm that this narrower contribution should resolve the issue.
 3. The full `conversation-websocket-handler.test.tsx` file still has unrelated broader failures in this environment even though the targeted queueing tests pass.
+4. The older related PR [OpenHands/OpenHands#14692](https://github.com/OpenHands/OpenHands/pull/14692) is also still open, so my PR may be evaluated as a narrower follow-up rather than the sole fix path.
 
 ---
 
@@ -65,6 +66,14 @@ The exact passing command was:
 ### PR Link
 
 **PR Link:** [OpenHands/OpenHands#14860](https://github.com/OpenHands/OpenHands/pull/14860)
+
+### Live PR Status
+
+As of June 18, 2026:
+
+- PR state: `open`
+- Draft status: `true`
+- Maintainer feedback: none yet
 
 ### Submitted PR Route
 
