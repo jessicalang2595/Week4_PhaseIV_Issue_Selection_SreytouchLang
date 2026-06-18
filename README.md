@@ -159,9 +159,19 @@ The original `jessicalang2595/OpenHands` fork was still not writable from this m
 
 ## Maintainer Feedback
 
-**Maintainer Feedback:** None yet.
+**Maintainer Feedback:** Automated GitHub Actions feedback received and addressed.
 
-The upstream PR is now open and ready for review, but there are currently no maintainer comments, requested changes, or approval states to report.
+On June 18, 2026, GitHub Actions left two automated PR comments:
+
+1. add a short explanation in the `HUMAN:` section at the top of the PR description
+2. confirm that the PR is ready for review
+
+I addressed both follow-ups:
+
+- updated the PR description to include the required `HUMAN:` note
+- posted a readiness confirmation comment on the PR thread
+
+There is still no human maintainer review feedback yet.
 
 ---
 
@@ -196,4 +206,3 @@ The next steps from here are:
 1. Watch PR [#14860](https://github.com/OpenHands/OpenHands/pull/14860) for maintainer feedback.
 2. Respond with follow-up changes if requested.
 3. Update this README again if the PR gets feedback, revisions, approval, or merge status changes.
-
