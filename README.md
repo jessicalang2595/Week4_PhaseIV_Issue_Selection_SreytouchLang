@@ -3,11 +3,11 @@
 **Contribution Number:** 4  
 **Student:** Jessica Lang  
 **Issue:** [OpenHands/OpenHands#12279](https://github.com/OpenHands/OpenHands/issues/12279)  
-**Status:** Phase IV submitted; draft PR awaiting review
+**Status:** Phase IV submitted; ready for review
 
 **Important note as of June 18, 2026:**
 
-I now have a real pushed OpenHands branch and a real submitted upstream draft PR. The original `jessicalang2595/OpenHands` fork was not writable from this machine, so I published the implementation branch through the authenticated `sreytouch` account and opened the upstream PR from that fork.
+I now have a real pushed OpenHands branch and a real submitted upstream PR. The original `jessicalang2595/OpenHands` fork was not writable from this machine, so I published the implementation branch through the authenticated `sreytouch` account and opened the upstream PR from that fork.
 
 ---
 
@@ -72,7 +72,7 @@ The exact passing command was:
 As of June 18, 2026:
 
 - PR state: `open`
-- Draft status: `true`
+- Draft status: `false`
 - Maintainer feedback: none yet
 
 ### Submitted PR Route
@@ -150,7 +150,8 @@ I resolved the branch-hosting blocker in these steps:
 
 1. Created a writable fork at [sreytouch/OpenHands](https://github.com/sreytouch/OpenHands)
 2. Pushed `test/v1-pending-message-queueing` there
-3. Opened the upstream draft PR: [OpenHands/OpenHands#14860](https://github.com/OpenHands/OpenHands/pull/14860)
+3. Opened the upstream PR: [OpenHands/OpenHands#14860](https://github.com/OpenHands/OpenHands/pull/14860)
+4. Marked the PR ready for review on June 18, 2026
 
 The original `jessicalang2595/OpenHands` fork was still not writable from this machine, so using the authenticated `sreytouch` account was the cleanest way to get a truthful public branch and PR link.
 
@@ -160,18 +161,18 @@ The original `jessicalang2595/OpenHands` fork was still not writable from this m
 
 **Maintainer Feedback:** None yet.
 
-The upstream PR is now open as a draft, but there are currently no maintainer comments, requested changes, or approval states to report.
+The upstream PR is now open and ready for review, but there are currently no maintainer comments, requested changes, or approval states to report.
 
 ---
 
 ## Status
 
-**Current Status:** Draft PR submitted; awaiting review.
+**Current Status:** PR submitted and ready for review.
 
 The accurate current state is:
 
 - remote branch pushed
-- upstream draft PR open
+- upstream PR open and ready for review
 - no maintainer feedback yet
 
 ---
@@ -183,7 +184,7 @@ My Week 4 contribution work focused on turning the Week 3 test contribution into
 - I confirmed the contribution branch, commit, diff scope, and targeted test results.
 - I checked the upstream repository's real PR template.
 - I published the branch to a writable fork at `sreytouch/OpenHands`.
-- I opened draft PR [#14860](https://github.com/OpenHands/OpenHands/pull/14860) into `OpenHands/OpenHands:main`.
+- I opened PR [#14860](https://github.com/OpenHands/OpenHands/pull/14860) into `OpenHands/OpenHands:main` and marked it ready for review.
 - I documented the remaining scope caveats honestly instead of overstating the fix.
 
 ---
@@ -194,6 +195,5 @@ The next steps from here are:
 
 1. Watch PR [#14860](https://github.com/OpenHands/OpenHands/pull/14860) for maintainer feedback.
 2. Respond with follow-up changes if requested.
-3. Update this README again if the PR moves from draft to active review, gets revisions, or is merged.
-
+3. Update this README again if the PR gets feedback, revisions, approval, or merge status changes.
 
