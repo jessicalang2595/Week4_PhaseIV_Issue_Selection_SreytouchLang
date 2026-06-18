@@ -3,7 +3,7 @@
 **Contribution Number:** 4  
 **Student:** Jessica Lang  
 **Issue:** [OpenHands/OpenHands#12279](https://github.com/OpenHands/OpenHands/issues/12279)  
-**Status:** Phase IV submitted; ready for review
+**Status:** Phase IV submitted ~ ready for review
 
 **Important note as of June 18, 2026:**
 
