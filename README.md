@@ -9,6 +9,12 @@
 
 I now have a real pushed OpenHands branch and a real submitted upstream PR. The original `jessicalang2595/OpenHands` fork was not writable from this machine, so I published the implementation branch through the authenticated `sreytouch` account and opened the upstream PR from that fork.
 
+**Update as of June 24, 2026:**
+
+- The PR description now uses **`Closes #12279`** (previously `Related to #12279`), with a transparent scope note left in the PR's `## Notes` section.
+- I surfaced the PR to maintainers with a dated review-request comment: [PR #14860 review-request comment](https://github.com/OpenHands/OpenHands/pull/14860#issuecomment-4794414812).
+- The only step now outside this repo is submitting the program check-in form marked **"Phase IV Complete."**
+
 ---
 
 ## Final Pre-Submission Checks
@@ -55,7 +61,7 @@ The exact passing command was:
 ### Remaining Pre-Submission Risks
 
 1. The original issue scope has drifted: current `OpenHands` `main` already includes server-side pending-message queueing, so this contribution is currently a test-coverage improvement around the modern implementation rather than a full original-feature implementation.
-2. I intentionally used `Related to #12279` in the PR instead of `Closes #12279` until maintainers confirm that this narrower contribution should resolve the issue.
+2. The PR now uses `Closes #12279`. Because upstream `main` already implements the queueing the issue described, I left a transparent scope note in the PR so maintainers can keep the issue open if they consider the original scope broader.
 3. The full `conversation-websocket-handler.test.tsx` file still has unrelated broader failures in this environment even though the targeted queueing tests pass.
 4. The older related PR [OpenHands/OpenHands#14692](https://github.com/OpenHands/OpenHands/pull/14692) is also still open, so my PR may be evaluated as a narrower follow-up rather than the sole fix path.
 
@@ -107,7 +113,7 @@ cover that disconnected queueing path or its error-handling behavior.
 
 ## Issue Number
 
-Related to #12279
+Closes #12279
 
 ## How to Test
 
@@ -139,9 +145,12 @@ Not applicable. This PR adds automated frontend test coverage only.
 ## Notes
 
 - This PR adds targeted coverage for the current V1 queue fallback path.
-- I am intentionally using `Related to #12279` instead of `Closes #12279`
-  because the current contribution strengthens coverage around the existing
-  implementation rather than clearly resolving the entire original issue scope.
+- Scope note: upstream `main` already implements the server-side pending-message
+  queueing the issue described; this PR adds the frontend test coverage that
+  validates the V1 disconnected-queueing behavior (both the successful-queue and
+  error-surfacing paths). I've set this to `Closes #12279` to tie the work to the
+  issue, and maintainers should feel free to keep the issue open if they consider
+  the original scope broader.
 ~~~
 
 ### Acceptance Criteria Checklist
@@ -185,6 +194,13 @@ The original `jessicalang2595/OpenHands` fork was still not writable from this m
 - **Feedback:** Readiness bot asked me to (1) add a short explanation in the `HUMAN:` section at the top of the description and (2) confirm the PR is ready for review.
 - **My response:** Edited the PR description to fill in the `HUMAN:` section with a plain-language summary of what the PR covers, then posted a confirmation comment on the thread.
 - **Reference:** bot comment `pr-readiness-confirm`; my reply comment by `sreytouch` on June 18, 2026 at 16:33 UTC on PR #14860. Branch head unchanged at commit `789fba3`.
+
+### Reviewer Surfacing
+
+- **Date:** June 24, 2026
+- **Action:** Posted a review-request comment on the PR to surface it to maintainers (summary of the change, test result, and an offer to adjust scope/keyword).
+- **Reference:** [PR #14860 review-request comment](https://github.com/OpenHands/OpenHands/pull/14860#issuecomment-4794414812)
+- I deliberately requested a general maintainer review rather than pinging a specific individual, since this is a live upstream repo and there is no CODEOWNERS entry covering the touched test file.
 
 ### Branch / Commit References
 
@@ -246,16 +262,20 @@ My Week 4 contribution work focused on turning the Week 3 test contribution into
 
 ## Process & Communication
 
-- **Check-in form:** to be submitted by me (Jessica Lang) with **"Phase IV Complete"** marked. *(This is a form action on the program's check-in system; it cannot be done from this repo — see Action Items below.)*
-- **Surfacing the PR to maintainers:** the PR is public and ready for review; the next communication step is to @mention or request a reviewer / surface it in the project's Discussions — see Action Items below.
+- **Surfacing the PR to maintainers:** ✅ Done June 24, 2026 — posted a [review-request comment](https://github.com/OpenHands/OpenHands/pull/14860#issuecomment-4794414812) on the PR.
+- **`Closes` keyword:** ✅ Done June 24, 2026 — the PR description now uses `Closes #12279`.
+- **Check-in form:** ⬜ Still to be submitted by me (Sreytouch / Jessica Lang) with **"Phase IV Complete"** marked. *(This is a form action on the program's check-in system; it is not a GitHub operation and cannot be done from this repo.)*
 
-### Action Items (must be done by me on GitHub / the check-in form)
+### Action Items
 
-These are the only remaining steps that live outside this README and require my authenticated accounts:
+Completed:
 
-1. **Submit the Contribution README and mark "Phase IV Complete"** on the program check-in form.
-2. **Surface the PR to a maintainer** — on [PR #14860](https://github.com/OpenHands/OpenHands/pull/14860), request a review / @mention an active OpenHands frontend maintainer, or post the PR in the project's Discussions, so it's visibly in front of the maintainers rather than only sitting in the queue.
-3. **(Optional, rubric `Closes` keyword)** If I decide this PR should formally resolve the issue, change `Related to #12279` to `Closes #12279` in the PR description. I have deliberately kept `Related to` because the original feature already exists upstream and this PR strengthens coverage rather than implementing the whole feature — so switching to `Closes` is a judgment call about scope, not just a wording tweak.
+1. ✅ **`Closes` keyword** — changed the PR description from `Related to #12279` to `Closes #12279` (with a transparent scope note in the PR's `## Notes`).
+2. ✅ **Surfaced the PR to maintainers** — posted a dated review-request comment on [PR #14860](https://github.com/OpenHands/OpenHands/pull/14860).
+
+Still mine to do (outside this repo — a program form, not GitHub):
+
+1. ⬜ **Submit the Contribution README and mark "Phase IV Complete"** on the program check-in form.
 
 ---
 
