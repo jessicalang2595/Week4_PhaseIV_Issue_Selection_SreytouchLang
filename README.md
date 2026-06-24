@@ -3,7 +3,7 @@
 **Contribution Number:** 4  
 **Student:** Sreytouch Lang(Jessica)
 **Issue:** [OpenHands/OpenHands#12279](https://github.com/OpenHands/OpenHands/issues/12279)  
-**Status:** Phase IV submitted ~ ready for review
+**Status:** Phase IV Complete — PR open against upstream `main` and ready for review
 
 **Important note as of June 18, 2026:**
 
@@ -144,6 +144,23 @@ Not applicable. This PR adds automated frontend test coverage only.
   implementation rather than clearly resolving the entire original issue scope.
 ~~~
 
+### Acceptance Criteria Checklist
+
+- [x] **Tests added** — two targeted V1 queue-fallback tests added to `frontend/__tests__/conversation-websocket-handler.test.tsx`.
+- [x] **Targeted tests passing** — the two new tests pass (`2 passed, 40 skipped`) under the bundled Node `24.14.0` runtime; see the **Test Check** section above for the exact command and output.
+- [x] **Follows the project style guide** — the change stays inside the existing Vitest test file, reuses the existing test setup/mocks, and adds no new lint or formatting deviations.
+- [x] **No breaking changes** — the PR is test-only (`+118` lines in one test file, no production code touched), so it cannot change runtime behavior for users.
+- [ ] **Full pre-existing suite green** — *not claimed.* The broader `conversation-websocket-handler.test.tsx` file has unrelated failures in this environment that predate my change; I scoped my verification to the two tests I added and documented this honestly rather than overstating it.
+
+### Before / After Evidence
+
+Because this is a backend/test contribution with no UI surface, the relevant evidence is test output rather than screenshots:
+
+- **Before:** the V1 disconnected-queueing fallback path and its error-handling behavior had no dedicated test coverage in the WebSocket handler suite.
+- **After:** running the targeted tests produces `2 passed, 40 skipped`, confirming both the successful-queue path and the error-surfacing path are now covered.
+
+Exact command and output are reproduced in the **Test Check** section above.
+
 ### Submission Notes
 
 I resolved the branch-hosting blocker in these steps:
@@ -159,31 +176,38 @@ The original `jessicalang2595/OpenHands` fork was still not writable from this m
 
 ## Maintainer Feedback
 
-**Maintainer Feedback:** Automated GitHub Actions feedback received and addressed.
+**Maintainer Feedback:** Automated GitHub Actions feedback received and addressed. No human maintainer review yet.
 
-On June 18, 2026, GitHub Actions left two automated PR comments:
+### Feedback Entry 1
 
-1. add a short explanation in the `HUMAN:` section at the top of the PR description
-2. confirm that the PR is ready for review
+- **Date:** June 18, 2026 (16:03 UTC)
+- **Source:** `github-actions[bot]` on [PR #14860](https://github.com/OpenHands/OpenHands/pull/14860)
+- **Feedback:** Readiness bot asked me to (1) add a short explanation in the `HUMAN:` section at the top of the description and (2) confirm the PR is ready for review.
+- **My response:** Edited the PR description to fill in the `HUMAN:` section with a plain-language summary of what the PR covers, then posted a confirmation comment on the thread.
+- **Reference:** bot comment `pr-readiness-confirm`; my reply comment by `sreytouch` on June 18, 2026 at 16:33 UTC on PR #14860. Branch head unchanged at commit `789fba3`.
 
-I addressed both follow-ups:
+### Branch / Commit References
 
-- updated the PR description to include the required `HUMAN:` note
-- posted a readiness confirmation comment on the PR thread
+- Implementation commit: `789fba303da66ea87f0439211ed108fd2c499414` — `test(frontend): add V1 pending message queue coverage` (June 16, 2026)
+- Hosted on branch `test/v1-pending-message-queueing` at [sreytouch/OpenHands](https://github.com/sreytouch/OpenHands/tree/test/v1-pending-message-queueing)
+- The `HUMAN:` section follow-up was a PR-description edit (PR metadata), not a new commit, so the branch head remains `789fba3`.
 
-There is still no human maintainer review feedback yet.
+There is still no human maintainer review feedback yet; this log will be updated when a maintainer responds.
 
 ---
 
 ## Status
 
-**Current Status:** PR submitted and ready for review.
+**Current Status:** Awaiting review.
+
+(Status vocabulary: Awaiting review / Iterating / Approved / Merged.)
 
 The accurate current state is:
 
 - remote branch pushed
-- upstream PR open and ready for review
-- no maintainer feedback yet
+- upstream PR open against `OpenHands/OpenHands:main` and marked ready for review (not a draft)
+- automated readiness-bot feedback addressed
+- no human maintainer feedback yet
 
 ---
 
@@ -199,10 +223,46 @@ My Week 4 contribution work focused on turning the Week 3 test contribution into
 
 ---
 
+## Learnings & Reflections
+
+### Technical gains
+
+- **Reading a large codebase before writing code pays off.** My Phase II investigation found that `OpenHands` `main` already shipped server-side pending-message queueing (commit `238cab4`, March 16, 2026). If I had jumped straight to "implement the feature," I would have rebuilt something that already existed. Diffing the issue's original description against the current `main` is now the first thing I do.
+- **Scoping a contribution to tests is a legitimate, mergeable contribution.** I learned how `OpenHands` structures its frontend Vitest suite, how it mocks `PendingMessageService` and the WebSocket layer, and how to write focused tests that exercise both the happy path (message queues while disconnected) and the failure path (queueing error surfaces to the caller and the error store).
+- **Targeted test execution.** I learned to run a single test file and filter to specific test names with Vitest's `-t` flag, which let me verify my two tests in isolation (`2 passed, 40 skipped`) instead of being blocked by unrelated pre-existing failures in the broader file.
+- **The fork → branch → upstream-PR mechanics.** I hit a real blocker — my original `jessicalang2595` fork was not writable from this machine — and resolved it by creating a writable fork, pushing the branch, and opening the upstream PR from there. I now understand the head/base relationship (`sreytouch:test/v1-pending-message-queueing` → `OpenHands:main`) and the difference between a draft and a ready-for-review PR.
+
+### What I'd do differently
+
+- **Validate issue freshness before Phase I selection.** I picked `#12279` partly because it was labeled `good first issue`, but it had already drifted (the feature was largely implemented) and had a competing open PR (`#14692`). Next time I'd confirm an issue is both unresolved *and* uncontested before committing four phases to it.
+- **Get the fork-write situation sorted on day one.** The branch-hosting blocker cost me time at submission. I'd verify push access to my fork during Phase I, not Phase IV.
+- **Match the close keyword to the actual scope earlier.** I'd decide up front whether a contribution truly *closes* an issue or merely *relates to* it, so the PR's framing is settled before I open it (see the **Action Items** note on `Closes` vs `Related to`).
+
+### Teachable insight for future cohorts
+
+> **An issue's description is a snapshot in time, not a contract.** Open-source `main` branches move fast — by the time you reach implementation, a "good first issue" may already be half-fixed by someone else's merged PR. Before writing a single line, diff the issue against the *current* `main`: read the relevant files, check `git log` for recent related commits, and search for open PRs that touch the same area. If the original feature already exists, the highest-value contribution is often *strengthening test coverage or documentation around it* — and saying so honestly in your PR (`Related to #X` instead of `Closes #X`) earns more maintainer trust than overstating a fix. Honest scoping is a feature, not a weakness.
+
+---
+
+## Process & Communication
+
+- **Check-in form:** to be submitted by me (Jessica Lang) with **"Phase IV Complete"** marked. *(This is a form action on the program's check-in system; it cannot be done from this repo — see Action Items below.)*
+- **Surfacing the PR to maintainers:** the PR is public and ready for review; the next communication step is to @mention or request a reviewer / surface it in the project's Discussions — see Action Items below.
+
+### Action Items (must be done by me on GitHub / the check-in form)
+
+These are the only remaining steps that live outside this README and require my authenticated accounts:
+
+1. **Submit the Contribution README and mark "Phase IV Complete"** on the program check-in form.
+2. **Surface the PR to a maintainer** — on [PR #14860](https://github.com/OpenHands/OpenHands/pull/14860), request a review / @mention an active OpenHands frontend maintainer, or post the PR in the project's Discussions, so it's visibly in front of the maintainers rather than only sitting in the queue.
+3. **(Optional, rubric `Closes` keyword)** If I decide this PR should formally resolve the issue, change `Related to #12279` to `Closes #12279` in the PR description. I have deliberately kept `Related to` because the original feature already exists upstream and this PR strengthens coverage rather than implementing the whole feature — so switching to `Closes` is a judgment call about scope, not just a wording tweak.
+
+---
+
 ## Next Steps
 
 The next steps from here are:
 
 1. Watch PR [#14860](https://github.com/OpenHands/OpenHands/pull/14860) for maintainer feedback.
 2. Respond with follow-up changes if requested.
-3. Update this README again if the PR gets feedback, revisions, approval, or merge status changes.
+3. Update this README again if the PR gets feedback, revisions, approval, or merge status changes (update the **Status** line to Iterating / Approved / Merged accordingly).
